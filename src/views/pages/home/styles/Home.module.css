@@ -1,0 +1,77 @@
+
+.headerLanding h1 {
+    line-height: 105px;
+    margin-bottom: 30px;
+}
+
+.headerLanding p {
+    width: 550px;
+    line-height: 35px;
+    margin-bottom: 50px;
+}
+
+
+.absolute_image {
+    position: absolute;
+    top: 270px;
+    left: -270px;
+}
+
+/* statistic icon */
+.statistic_icon {
+    width: 100px;
+    height: 100px;
+    background: #EEF5FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+/* mt-1 mb-4 text-primary fs-4 */
+.step_list_icon {
+    width: 75px;
+    height: 75px;
+    background: #EEF5FF;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.step_list_desc {
+    line-height: 35px;
+    max-width: 340px;
+}
+
+.testimoni_header h2 {
+    line-height: 85px;
+}
+
+.testimoni_header p {
+    line-height: 35px;
+}
+
+.testimoni_scroll_icon {
+    font-size: 40px;
+}
+
+.testimoni_scroll_icon svg {
+    color: #EEEEEE;
+}
+
+.testimoni_scroll_icon path:hover {
+    color: #b9b9b9;
+}
+
+.testimoni_scroll_icon path {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 992px) {
+    .absolute_image {
+       display: none;
+    }
+}
