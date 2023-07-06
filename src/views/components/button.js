@@ -12,7 +12,7 @@ export const ButtonMd = ({ label, onClick }) => {
   return (
     <Btn
       onClick={onClick}
-      className="rounded-pill px-5 py-3"
+      className="rounded-pill fw-bold px-5 py-3"
     >{label}</Btn>
   )
 }

@@ -29,7 +29,7 @@ const Header = (props) => {
       <NavigationLink href="#c">Testimoni</NavigationLink>
       <NavigationLink href="#d">FAQ</NavigationLink>
       {user.login ? (
-        <NavigationLink href="#profile">
+        <NavigationLink href="/dashboard/profile">
           <PersonFill size={24} />
           {user.name}
         </NavigationLink>

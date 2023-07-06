@@ -9,19 +9,38 @@ import PsikotesAttempts from './views/pages/psikotes/attempts';
 import PsikotesPayment from './views/pages/psikotes/payment';
 import ForgotPassword from './views/pages/login/forgot-password';
 
+import Dashboard from './views/pages/dashboard';
+import DashboardProfile from './views/pages/dashboard/pages/profile';
+import DashboardPsikotes from './views/pages/dashboard/pages/psikotes';
+import DashboardJadwal from './views/pages/dashboard/pages/jadwal';
+import DashboardRiwayat from './views/pages/dashboard/pages/riwayat';
+import DashboardPengaturan from './views/pages/dashboard/pages/setting';
+
 const App = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" exact element={<Home />} />
-        <Route path="/login" exact element={<Login />} />
-        <Route path="/register" exact element={<Register />} />
-        <Route path="/psikotes" exact element={<Psikotes shadow={false} />} />
-        <Route path="/psikotes/attempts" exact element={<PsikotesAttempts shadow={false} />} />
-        <Route path="/psikotes/payment" exact element={<PsikotesPayment shadow={false} />} />
-        <Route path="/forgot-password" exact element={<ForgotPassword />} />
+      <Routes> 
+        <Route path="/">
+          <Route index element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="psikotes">
+            <Route index element={<Psikotes shadow={false} />} />
+            <Route path="attempts" element={<PsikotesAttempts shadow={false} />} />
+            <Route path="payment" element={<PsikotesPayment shadow={false} />} />
+          </Route>
+          <Route path="forgot-password" element={<ForgotPassword />} />
+          <Route path="dashboard">
+            <Route index element={<Dashboard page={<DashboardProfile />} shadow={false} />} />
+            <Route path="profile" element={<Dashboard page={<DashboardProfile />} />} />
+            <Route path="psikotes" element={<Dashboard page={<DashboardPsikotes />} />} />
+            <Route path="jadwal" element={<Dashboard page={<DashboardJadwal />} />} />
+            <Route path="riwayat" element={<Dashboard page={<DashboardRiwayat />} />} />
+            <Route path="setting" element={<Dashboard page={<DashboardPengaturan />}/>} />
+            <Route path="logout" element={<Dashboard />} />
+          </Route>
+        </Route>
       </Routes>
-        
     </BrowserRouter>
   );
 }

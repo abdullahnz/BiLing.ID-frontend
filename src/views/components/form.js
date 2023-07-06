@@ -90,7 +90,7 @@ export const FormDefault = ({ name, label, help, placeholder, onChange, type = "
 export const FormRadio = ({ name, label, selections }) => {
   return (
     <Form.Group className="mb-3">
-      <FormLabel>{label}</FormLabel>
+      {label && <FormLabel>{label}</FormLabel>}
       {selections.map((selection, key) => {
         return (
           <Form.Check
@@ -117,7 +117,7 @@ export const FormPassword = ({ name, label, placeholder, className, onChange }) 
 
   return (
     <Form.Group className="mb-3">
-      <FormLabel>{label}</FormLabel>
+      {label && <FormLabel>{label}</FormLabel>}
       <InputGroup>
         <FormControl
           name={name}

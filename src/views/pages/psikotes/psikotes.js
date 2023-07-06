@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 import { PsikotesGuide, PsikotesGuideItem } from "./psikotes.component";
 
+import style from "./styles/payment.module.css"
+
 const Psikotes = () => {
   const navigate = useNavigate();
   const startAttempts = () => {
@@ -14,7 +16,7 @@ const Psikotes = () => {
   return (
     <>
       <Navbar shadow={false} />
-      <Container style={{ marginTop: "100px" }} className="psikotes-header">
+      <Container style={{ marginTop: "100px" }} className={style.psikotesHeader}>
         <Header
           title={"Tes kepribadian MBTI: Kenali dirimu lebih jauh!"}
           description={

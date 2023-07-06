@@ -4,6 +4,8 @@ import Footer from "../../layouts/footer";
 import { useState } from "react";
 import { config } from "../../../global/config";
 
+import style from "./styles/payment.module.css"
+
 import {
   PsikotesResult,
   PsikotesWrapper,
@@ -53,7 +55,7 @@ const AttemptPsikotes = (props) => {
     <>
       <Navbar {...props} />
       {isFinished ? (
-        <Container className="mt-5">
+        <Container className={style.psikotesHeader}>
           <PsikotesResult
             title={config.pages.simulation.result.title}
             desc={config.pages.simulation.result.description}

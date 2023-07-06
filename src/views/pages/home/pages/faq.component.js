@@ -39,7 +39,7 @@ export const FaqQuestionDropdown = ({ question, answer, show, onClick }) => {
 };
 
 export const FaqQuestionIcon = ({ show }) => {
-  return <>{show ? <CaretUpFill size={32} /> : <CaretDownFill size={32} />}</>;
+  return <>{show ? <CaretUpFill size={24} /> : <CaretDownFill size={24} />}</>;
 };
 
 export const FaqQuestionContainer = ({ children, onClick }) => {

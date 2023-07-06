@@ -174,7 +174,6 @@ const Payment = () => {
             "Pembayaran selesai",
           ]}
         />
-
         {progress === 0 && <PaymentMethodList onClick={() => setProgress(1)} />}
         {progress === 1 && <PaymentMethodConfirm changePaymentMethod={() => setProgress(0)} />}
         {progress === 2 && <PaymentSuccess />}

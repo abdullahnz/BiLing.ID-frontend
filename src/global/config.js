@@ -11,6 +11,7 @@ export const config = {
   },
   user: {
     name: "Arla Sifhana Putri",
+    email: "arlasifhanap@gmail.com",
     login: true,
   },
   pages: {
