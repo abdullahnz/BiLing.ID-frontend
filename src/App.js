@@ -17,8 +17,6 @@ import DashboardRiwayat from './views/pages/dashboard/pages/riwayat';
 import DashboardPengaturan from './views/pages/dashboard/pages/setting';
 import Logout from './views/pages/dashboard/pages/logout';
 
-import { useState } from 'react';
-
 const App = () => {
    
   return (
