@@ -1,5 +1,5 @@
 import { Header, SubHeader } from "../../components/utils";
-import Navbar from "../../layouts/header";
+import HeaderNav from "../../layouts/header";
 import Footer from "../../layouts/footer";
 import { Button, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +15,7 @@ const Psikotes = () => {
   }
   return (
     <>
-      <Navbar shadow={false} />
+      <HeaderNav shadow={false} />
       <Container style={{ marginTop: "100px" }} className={style.psikotesHeader}>
         <Header
           title={"Tes kepribadian MBTI: Kenali dirimu lebih jauh!"}

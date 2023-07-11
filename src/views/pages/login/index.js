@@ -9,15 +9,26 @@ import {
 } from "../../components/form";
 import { BrandApp, Lines, SubHeader } from "../../components/utils";
 import RegisterImage from "../../assets/img/register-image.png";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+
+import { login, getUser } from "../../../services/api/auth";
+
+import { toast } from 'react-toastify';
+
+import { ToastHelper } from "../../components/toast";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Login = () => {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
-    email: null,
-    password: null,
+    email: '',
+    password: '',
   })
 
   const formDataChangeHandler = (event) => { 
+    event.preventDefault()
+
     setFormData((prev) => {
       return {
         ...prev,
@@ -26,12 +37,28 @@ const Login = () => {
     })
   }
 
-  const submitLoginHandler = () => {
-    alert("LOGIN")
+  const submitLoginHandler = async (event) => {
+    event.preventDefault()
+
+    const response = await login(formData)
+    if (response.status === 'error' || response.errors) {
+      toast.warning(response.message);
+    } else {
+      Cookies.set('token', response.data.token); 
+      await getUser()
+        .then(() => {
+          toast.success(response.message)
+          setTimeout(() => {
+            navigate("/")
+          }, 2500);
+        })
+        
+    }
   }
 
   return (
     <>
+      <ToastHelper />
       <Row className="m-0 vh-100">
         <FormContainer className="bg-primary">
           <BrandApp color="white" />

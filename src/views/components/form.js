@@ -40,7 +40,7 @@ export const FormButton = (props) => {
   return (
     <Button
       variant="primary"
-      className="px-5 py-3 rounded-pill fw-bold"
+      className="px-5 py-4 rounded-pill fw-bold"
       style={{ fontSize: "12px" }}
       {...props}
     >
@@ -59,37 +59,32 @@ export const FormLabel = ({ children, className }) => {
 
 export const FormInfo = ({ children, className }) => {
   return (
-    <p className={`mb-3 ${className}`}>{children}</p>
+    <p className={`mb-3 ${className}`} style={{marginTop: "-8px"}}>{children}</p>
   )
 }
 
-export const FormControl = ({ name, type, value, onChange, style = {}, placeholder = "" }) => {
+export const FormControl = (props) => {
   return (
     <Form.Control
-      className="px-4 py-3 rounded-pill"
-      name={name}
-      type={type}
-      placeholder={placeholder}
-      value={value} 
-      style={style}
-      onChange={onChange}
+      className={`px-4 py-4 rounded-pill ${props.className}`}
+      {...props}
     />
   )
 }
 
-export const FormDefault = ({ name, label, help, placeholder, onChange, type = "text", className = "" }) => {
+export const FormDefault = ({ name, label, value, help, placeholder, onChange, type = "text", className }) => {
   return (
-    <Form.Group className="mb-3">
+    <Form.Group className={className || "mb-3"}>
       { label && <FormLabel>{label}</FormLabel> }
-      { help && <FormInfo text={help} /> }
-      <FormControl name={name} onChange={onChange} type={type} placeholder={placeholder} />
+      { help && <FormInfo>{help}</FormInfo> }
+      <FormControl name={name} onChange={onChange} type={type} placeholder={placeholder} value={value} />
     </Form.Group>
   );
 };
 
-export const FormRadio = ({ name, label, selections }) => {
+export const FormRadio = ({ name, label, selections, onChange, selected }) => {
   return (
-    <Form.Group className="mb-3">
+    <Form.Group className="mb-4" >
       {label && <FormLabel>{label}</FormLabel>}
       {selections.map((selection, key) => {
         return (
@@ -99,6 +94,9 @@ export const FormRadio = ({ name, label, selections }) => {
             key={key}
             name={name}
             label={selection}
+            value={selection}
+            onChange={onChange}
+            checked={selected === selection}
           />
         );
       })}
@@ -106,7 +104,7 @@ export const FormRadio = ({ name, label, selections }) => {
   );
 };
 
-export const FormPassword = ({ name, label, placeholder, className, onChange }) => {
+export const FormPassword = ({ name, label, placeholder, onChange }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleDisplayPassword = () => {
@@ -121,7 +119,7 @@ export const FormPassword = ({ name, label, placeholder, className, onChange }) 
       <InputGroup>
         <FormControl
           name={name}
-          className="px-4 py-3 rounded-pill position-relative"
+          className="px-4 py-4 rounded-pill position-relative"
           style={{ zIndex: "0" }}
           type={showPassword ? "text" : "password"}
           placeholder={placeholder}
@@ -156,7 +154,7 @@ export const FormPassword = ({ name, label, placeholder, className, onChange }) 
 
 export const FormGoogleButton = ({ label }) => {
   return (
-    <Button variant="white" className="shadow-1 rounded-pill mt-3 px-5 py-3">
+    <Button variant="white" className="shadow-1 rounded-pill mt-3 px-5 py-4">
       <Image src="/assets/icon/google.png" className="me-3" />
       {label}
     </Button>

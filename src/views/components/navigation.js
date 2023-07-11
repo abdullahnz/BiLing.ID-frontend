@@ -36,7 +36,7 @@ export const NavigationDropdownItem = ({ href, text }) => {
 
 export const NavigationLink = ({ href, children }) => {
   return (
-    <Nav.Link className="mx-3 text-black d-flex gap-2" href={href}>
+    <Nav.Link className="mx-3 text-black d-flex justify-content-center gap-2" href={href}>
       {children}
     </Nav.Link>
   );

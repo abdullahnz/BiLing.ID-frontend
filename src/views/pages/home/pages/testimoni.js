@@ -14,7 +14,7 @@ const Testimoni = () => {
   };
 
   return (
-    <>
+    <div id="testimoni">
       <TestimoniContainer scrollRef={horizontalScrollRef}>
         <Col xs={4}>
           <SubHeader
@@ -63,7 +63,7 @@ const Testimoni = () => {
           <CaretRightFill onClick={() => scroll(300)} />
         </div>
       </Row>
-    </>
+    </div>
   );
 };
 

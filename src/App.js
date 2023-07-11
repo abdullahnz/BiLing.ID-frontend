@@ -15,8 +15,12 @@ import DashboardPsikotes from './views/pages/dashboard/pages/psikotes';
 import DashboardJadwal from './views/pages/dashboard/pages/jadwal';
 import DashboardRiwayat from './views/pages/dashboard/pages/riwayat';
 import DashboardPengaturan from './views/pages/dashboard/pages/setting';
+import Logout from './views/pages/dashboard/pages/logout';
+
+import { useState } from 'react';
 
 const App = () => {
+   
   return (
     <BrowserRouter>
       <Routes> 
@@ -31,13 +35,13 @@ const App = () => {
           </Route>
           <Route path="forgot-password" element={<ForgotPassword />} />
           <Route path="dashboard">
-            <Route index element={<Dashboard page={<DashboardProfile />} shadow={false} />} />
-            <Route path="profile" element={<Dashboard page={<DashboardProfile />} />} />
-            <Route path="psikotes" element={<Dashboard page={<DashboardPsikotes />} />} />
-            <Route path="jadwal" element={<Dashboard page={<DashboardJadwal />} />} />
-            <Route path="riwayat" element={<Dashboard page={<DashboardRiwayat />} />} />
-            <Route path="setting" element={<Dashboard page={<DashboardPengaturan />}/>} />
-            <Route path="logout" element={<Dashboard />} />
+            <Route index element={<Dashboard page={DashboardProfile} shadow={false} />} />
+            <Route path="profile" element={<Dashboard page={DashboardProfile} />} />
+            <Route path="psikotes" element={<Dashboard page={DashboardPsikotes} />} />
+            <Route path="jadwal" element={<Dashboard page={DashboardJadwal} />} />
+            <Route path="riwayat" element={<Dashboard page={DashboardRiwayat} />} />
+            <Route path="setting" element={<Dashboard page={DashboardPengaturan} />} />
+            <Route path="logout" element={<Logout />} />
           </Route>
         </Route>
       </Routes>

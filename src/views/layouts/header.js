@@ -5,33 +5,48 @@ import {
   NavigationDropdownItem,
   NavigationLink,
 } from "../components/navigation"
-import { Button } from "../components/button";
-import { PersonFill } from "react-bootstrap-icons";
 
-import { config } from "../../global/config";
+import { PersonFill } from "react-bootstrap-icons";
+import { Button } from "../components/button"
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 const Header = (props) => {
+  
+  const parseUserFromCookies = () => {
+    return JSON.parse(Cookies.get('user') || "false" );
+  }
+
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const user = parseUserFromCookies();
+    if (!user) {
+      return navigate("/login");
+    }
+    setUser(() => user);
+  }, [])
+
   const navigate = useNavigate();
+  
   const redirectToLogin = () => {
     navigate("/login");
   }
-  
-  const user = config.user;
 
   return (
     <Navigation {...props}>
-      <NavigationLink href="#a">Tentang Kami</NavigationLink>
+      <NavigationLink href="/#tentang-kami">Tentang Kami</NavigationLink>
       <NavigationDropdown title="Layanan">
-        <NavigationDropdownItem href="#b-1" text="Simulasi Psikotes" />
-        <NavigationDropdownItem href="#b-2" text="Psikotes" />
-        <NavigationDropdownItem href="#b-3" text="Konseling" />
+        <NavigationDropdownItem href="/psikotes" text="Simulasi Psikotes" />
+        <NavigationDropdownItem href="/psikotes" text="Psikotes" />
+        <NavigationDropdownItem href="/konseling" text="Konseling" />
       </NavigationDropdown>
-      <NavigationLink href="#c">Testimoni</NavigationLink>
-      <NavigationLink href="#d">FAQ</NavigationLink>
-      {user.login ? (
+      <NavigationLink href="/#testimoni">Testimoni</NavigationLink>
+      <NavigationLink href="/#faq">FAQ</NavigationLink>
+      {user ? (
         <NavigationLink href="/dashboard/profile">
           <PersonFill size={24} />
-          {user.name}
+          {user.fullname}
         </NavigationLink>
       ) : (
         <NavigationLink href="#">

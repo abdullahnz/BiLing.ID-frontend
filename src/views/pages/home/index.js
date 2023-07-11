@@ -8,14 +8,14 @@ import Steps from "./pages/steps";
 import HomeLanding from "./pages/landing";
 import Testimoni from "./pages/testimoni";
 import FrequentlyAskedQuestion from "./pages/faq";
-// import Footer from "../components/navigation/Footer";
 
+import Cookies from "js-cookie";
 import { config } from "../../../global/config";
 
-const Home = () => {
+const Home = (props) => {
   return (
     <Fragment>
-      <Header user={config.user} shadow={false} />
+      <Header shadow={false} />
       <Container>
         <HomeLanding />
       </Container>

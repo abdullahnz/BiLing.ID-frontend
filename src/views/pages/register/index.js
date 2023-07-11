@@ -7,15 +7,21 @@ import {
   FormContainer,
 } from "../../components/form";
 import { SubHeader, Lines, BrandApp } from "../../components/utils";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import RegisterImage from "../../assets/img/register-image.png";
+import { ToastHelper } from "../../components/toast";
+import { toast } from "react-toastify";
+import { register } from "../../../services/api/auth";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate()
+
   const [formData, setFormData] = useState({
     fullname: null,
     email: null,
     password: null,
-    confirmPassword: null
+    password_confirmation: null
   })
   const [acceptTerms, setAcceptTerms] = useState(false)
 
@@ -32,21 +38,27 @@ const Register = () => {
     setAcceptTerms(() => event.target.checked)
   }
 
-  const registerSubmitHandler = () => {
+  const registerSubmitHandler = async () => {
     if (!acceptTerms) {
-      alert("HARUS TERIMA SYARAT DAN KETENTUAN")
-    } else {
-      alert("REGISTER BERHASIL")
+      return toast.warning("Anda harus menyetujui syarat dan ketentuan terlebih dahulu")
     }
+
+    await register(formData)
+      .then((response) => {
+        if (response.errors || response.status === "error") {
+          return toast.warning(response.message)
+        }
+        toast.success(response.message)
+        setTimeout(() => {
+          navigate("/")
+        }, 2500);
+      })
   }
 
-  // useEffect(() => {
-  //   console.log(formData)
-  //   console.log(acceptTerms)
-  // }, [formData, acceptTerms])
 
   return (
     <Row className="m-0 vh-100">
+      <ToastHelper />
       <FormContainer className="bg-primary">
         <BrandApp color="white" />
         <Image src={RegisterImage} style={{ marginTop: "120px" }} />
@@ -87,7 +99,7 @@ const Register = () => {
             onChange={formDataChangeHandler}
           />
           <FormPassword
-            name="passwordConfirm"
+            name="password_confirmation"
             label="Konfirmasi Kata Sandi"
             placeholder="Harus sama dengan kata sandi"
             onChange={formDataChangeHandler}
@@ -105,7 +117,9 @@ const Register = () => {
             <FormRedirect to="#ketentuan" text="ketentuan" key={2} />,
           ]}
         />
-        <div className="mt-3 text-end">
+        <div className="mt-3 text-end" style={{
+          marginBottom: "120px"
+        }}>
           <Button
             variant="primary"
             className="px-5 py-3 rounded-pill fw-bold"

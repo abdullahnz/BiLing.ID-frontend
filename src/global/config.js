@@ -2,17 +2,25 @@ import BatteryEmpty from "./icons/battery-empty.svg";
 import People from "./icons/people.svg";
 import ProfileTick from "./icons/profile-tick.svg";
 
-export const config = {
+export let config = {
   app: {
     name: "BiLing.ID",
   },
   api: {
+    base: "http://localhost:8000",
     url: "http://localhost:8000/api",
   },
   user: {
-    name: "Arla Sifhana Putri",
+    fullname: "Arla Sifhana Putri",
     email: "arlasifhanap@gmail.com",
+    phone: "081234567890",
+    dateOfBirth: "2003-12-31",
+    gender: "Perempuan",
+    password: "***********",
     login: true,
+    // role: 0, // admin
+    // role: 1, // psikolog
+    role: 2, // klien
   },
   pages: {
     landing: {

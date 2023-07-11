@@ -35,14 +35,14 @@ const Faq = () => {
     },
   ];
   return (
-    <>
+    <div id="faq">
       <SubHeader
         title={"FAQ BiLing.id"}
         desc={"Pertanyaan seputar bimbingan konseling online"}
         className="text-center mb-5"
       />
       <FaqQuestionList data={faqData} />
-    </>
+    </div>
   );
 };
 
