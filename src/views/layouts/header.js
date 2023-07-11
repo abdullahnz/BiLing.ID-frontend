@@ -10,21 +10,22 @@ import { PersonFill } from "react-bootstrap-icons";
 import { Button } from "../components/button"
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import * as Crypto from "../../services/helper/crypto"
 
 const Header = (props) => {
   
   const parseUserFromCookies = () => {
-    return JSON.parse(Cookies.get('user') || "false" );
+    try {
+      return Crypto.decrypt(Cookies.get('user'));
+    } catch (err) {
+      navigate("/")
+    }
   }
 
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    const user = parseUserFromCookies();
-    if (!user) {
-      return navigate("/login");
-    }
-    setUser(() => user);
+    setUser(() => parseUserFromCookies());
   }, [])
 
   const navigate = useNavigate();

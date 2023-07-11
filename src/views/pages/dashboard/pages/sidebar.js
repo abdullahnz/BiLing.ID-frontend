@@ -17,13 +17,9 @@ import styles from "../styles/style.module.css"
 import Cookies from "js-cookie";
 
 
-const Sidebar = (props) => {
-  const { user } = props;
-
+const Sidebar = (props) => { 
   const navigate = useNavigate()
   const [logout, setLogout] = useState(false)
-
-    
 
   const handleCancelLogout = () => {
     setLogout((logout) => !logout)
@@ -48,7 +44,7 @@ const Sidebar = (props) => {
       </div>
       <Col xs={3} className="bg-white shadow-1 rounded-40" style={{ height: "fit-content" }}>
         <div className="my-5 mx-3">
-          <SidebarHeader name={user.fullname} email={user.email} />
+          <SidebarHeader name={props.user.fullname} email={props.user.email} />
           <div className="pt-2">
             <SidebarLink to="/dashboard/profile" icon={<User />} text="Profil" />
             <SidebarLink to="/dashboard/psikotes" icon={<Note />} text="Psikotes" />

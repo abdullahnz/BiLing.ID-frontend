@@ -1,13 +1,11 @@
 import { Image, Container, Row } from "react-bootstrap";
 
-import { Button } from "../../../components/button";
 import SuccessIcon from "../../../assets/icon/success.svg";
 
 import Navbar from "../../../layouts/header";
 import Footer from "../../../layouts/footer"
 
 const Logout = ( props ) => {
-
   return (
     <>
       <Navbar shadow={false} />

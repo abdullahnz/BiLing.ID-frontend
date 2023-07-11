@@ -50,7 +50,7 @@ const Register = () => {
         }
         toast.success(response.message)
         setTimeout(() => {
-          navigate("/")
+          navigate("/login")
         }, 2500);
       })
   }

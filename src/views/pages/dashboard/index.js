@@ -10,6 +10,7 @@ import Cookies from "js-cookie";
 import { formatDate } from "./pages/profile.component";
 import { toast } from "react-toastify";
 import { updateEmail, updatePassword, updateUser } from "../../../services/api/auth";
+import * as Crypto from "../../../services/helper/crypto";
 
 const Dashboard = (props) => {
   const navigate = useNavigate();
@@ -18,7 +19,11 @@ const Dashboard = (props) => {
   }
 
   const parseUserFromCookies = () => {
-    return JSON.parse(Cookies.get('user') || "false" );
+    try {
+      return Crypto.decrypt(Cookies.get('user'));
+    } catch (err) {
+      navigate("/")
+    }
   }
 
   const [user, setUser] = useState({});

@@ -1,6 +1,7 @@
 import Cookies from "js-cookie";
 import { config } from "../../global/config";
 import axios from "axios";
+import * as Crypto from "../helper/crypto"
 
 export const login = async (data) => {
   const response = await axios
@@ -43,7 +44,7 @@ export const getUser = async () => {
       return error.response.data
     })
     
-  Cookies.set('user', JSON.stringify(response.data.user));
+  Cookies.set('user', Crypto.encrypt(response.data.user));
     
   return response;
 };

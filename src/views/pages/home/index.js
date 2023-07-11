@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import Header from "../../layouts/header";
 import Footer from "../../layouts/footer";
@@ -9,10 +9,10 @@ import HomeLanding from "./pages/landing";
 import Testimoni from "./pages/testimoni";
 import FrequentlyAskedQuestion from "./pages/faq";
 
-import Cookies from "js-cookie";
 import { config } from "../../../global/config";
 
 const Home = (props) => {
+  
   return (
     <Fragment>
       <Header shadow={false} />
